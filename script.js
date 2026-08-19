@@ -115,7 +115,7 @@ const boardInfo =
 
 
 boardInfo.textContent =
-    "Finde jeweils jemanden, der/die...";
+    "Finde Jemand, der/die...";
 
 
 // ------------------------------------------
@@ -429,5 +429,85 @@ document
         }
     );
 
+
+// ------------------------------------------
+// Bingo als Text speichern
+// ------------------------------------------
+
+document
+    .getElementById("downloadButton")
+    .addEventListener(
+        "click",
+        function () {
+
+            let text =
+                "Mein Kennenlern-Bingo\n\n";
+
+
+            for (
+                let index = 0;
+                index < 25;
+                index++
+            ) {
+
+                if (index === 12) {
+
+                    text +=
+                        "FREE 🎉\n\n";
+
+                    continue;
+                }
+
+
+                const questionIndex =
+                    index < 12
+                        ? index
+                        : index - 1;
+
+
+                text +=
+                    board[questionIndex];
+
+
+                if (savedNames[index]) {
+
+                    text +=
+                        " — " +
+                        savedNames[index];
+                }
+
+
+                text += "\n\n";
+            }
+
+
+            const blob =
+                new Blob(
+                    [text],
+                    {
+                        type:
+                            "text/plain;charset=utf-8"
+                    }
+                );
+
+
+            const url =
+                URL.createObjectURL(blob);
+
+
+            const link =
+                document.createElement("a");
+
+
+            link.href = url;
+
+            link.download =
+                "mein-kennenlern-bingo.txt";
+
+
+            link.click();
+
+
+            URL.revokeObjectURL(url);
         }
     );
