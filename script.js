@@ -283,6 +283,7 @@ function checkBingo() {
         document.querySelectorAll(
             ".bingo-cell"
         );
+    var finished = false;
 
 
     const completed =
@@ -309,8 +310,7 @@ function checkBingo() {
             completed[start + 4]
         ) {
 
-            showBingo();
-            return;
+            finished = true;
         }
     }
 
@@ -327,8 +327,7 @@ function checkBingo() {
             completed[col + 20]
         ) {
 
-            showBingo();
-            return;
+            finished = true;
         }
     }
 
@@ -343,8 +342,7 @@ function checkBingo() {
         completed[24]
     ) {
 
-        showBingo();
-        return;
+        finished = true;
     }
 
 
@@ -358,7 +356,15 @@ function checkBingo() {
         completed[20]
     ) {
 
+        finished = true;
+    }
+    if(finished == true)
+    {
         showBingo();
+        return;
+    }else
+    {
+        removeBingo();
         return;
     }
 }
@@ -370,28 +376,41 @@ function checkBingo() {
 
 function showBingo() {
 
-    if (
-        document.getElementById(
-            "bingoMessage"
-        )
-    ) {
-        return;
-    }
-
-
     const message =
-        document.createElement("div");
+        document.getElementById("bingoMessage");
 
-    message.id =
-        "bingoMessage";
+    if (message) {
 
-    message.textContent =
-        "🎉 BINGO! 🎉";
+        message.textContent = "🎉 BINGO! 🎉";
 
+    } else {
 
-    document
-        .querySelector(".container")
-        .prepend(message);
+        const newMessage =
+            document.createElement("div");
+
+        newMessage.id =
+            "bingoMessage";
+
+        newMessage.textContent =
+            "🎉 BINGO! 🎉";
+
+        document
+            .querySelector(".container")
+            .prepend(newMessage);
+    }
+}
+
+// ------------------------------------------
+// BINGO wegmachen
+// ------------------------------------------
+
+function removeBingo() {
+
+    const message = document.getElementById("bingoMessage");
+    if(message)
+    {
+        message.remove();
+    }
 }
 
 
