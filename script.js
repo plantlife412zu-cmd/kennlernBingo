@@ -115,7 +115,7 @@ const boardInfo =
 
 
 boardInfo.textContent =
-    "Finde Jemand, der/die...";
+    "Dein persönliches Kennenlern-Bingo";
 
 
 // ------------------------------------------
@@ -146,7 +146,7 @@ for (let index = 0; index < 25; index++) {
             "question";
 
         freeText.textContent =
-            "Freies Feld!";
+            "FREE 🎉";
 
         cell.appendChild(freeText);
 
@@ -386,7 +386,7 @@ function showBingo() {
         "bingoMessage";
 
     message.textContent =
-        "BINGO!";
+        "🎉 BINGO! 🎉";
 
 
     document
