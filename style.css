@@ -1,0 +1,132 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    color: #222;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 5px;
+}
+
+#boardInfo {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+#bingoBoard {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    max-width: 800px;
+    margin: auto;
+}
+
+.bingo-cell {
+    min-height: 120px;
+    background: white;
+    border: 2px solid #222;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 10px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.bingo-cell:hover {
+    transform: scale(1.02);
+}
+
+.bingo-cell.completed {
+    background: #b9f6c3;
+}
+
+.question {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.name-input {
+    width: 90%;
+    padding: 8px;
+
+    border: 1px solid #aaa;
+    border-radius: 6px;
+
+    font-size: 14px;
+    text-align: center;
+}
+
+.buttons {
+    margin-top: 25px;
+
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+button {
+    padding: 12px 18px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #222;
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 15px;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+/* Handy */
+
+@media (max-width: 600px) {
+
+    .container {
+        padding: 10px;
+    }
+
+    #bingoBoard {
+        gap: 5px;
+    }
+
+    .bingo-cell {
+        min-height: 100px;
+        padding: 5px;
+        font-size: 12px;
+    }
+
+    .name-input {
+        width: 95%;
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+}
